@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Video, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
+import { BookOpen, TrendingUp, FileText, Calculator, Phone, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -15,28 +15,39 @@ const stagger = {
 
 const consultationTypes = [
   {
-    id: "discovery",
-    title: "Discovery Call",
-    duration: "15 min",
-    price: "Free",
-    desc: "A quick introductory call to understand your business needs and see how we can help.",
+    id: "6-month-boost",
+    title: "6-Month Bookkeeping Boost",
+    duration: "6 months",
+    desc: "Dedicated bookkeeping support, monthly budget reviews, and weekly check-ins over half a year.",
+    icon: BookOpen,
+  },
+  {
+    id: "12-month-boost",
+    title: "12-Month Bookkeeping Boost",
+    duration: "12 months",
+    desc: "A full year of bookkeeping, plus payroll and VAT registration handled for you.",
+    icon: TrendingUp,
+  },
+  {
+    id: "business-registration",
+    title: "Registering Your Business",
+    duration: "One-off",
+    desc: "Sole trader or limited company registration, handled from consultation through to confirmation.",
+    icon: FileText,
+  },
+  {
+    id: "finance-check-up",
+    title: "Finance Check Up",
+    duration: "One-off",
+    desc: "A performance review, budget planner, and check-in session to reset your business finances.",
+    icon: Calculator,
+  },
+  {
+    id: "1-1-call",
+    title: "Book a 1:1 Call",
+    duration: "Consultation",
+    desc: "Direct, personalised financial guidance for whatever's on your mind.",
     icon: Phone,
-  },
-  {
-    id: "paid",
-    title: "Paid Consultation",
-    duration: "45 min",
-    price: "£97",
-    desc: "An in-depth session to review your finances, answer questions, and provide actionable recommendations.",
-    icon: Video,
-  },
-  {
-    id: "followup",
-    title: "Follow-Up Session",
-    duration: "30 min",
-    price: "£67",
-    desc: "A follow-up session for existing clients to review progress and address new questions.",
-    icon: Calendar,
   },
 ];
 
@@ -79,7 +90,7 @@ export default function Booking() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
-            className="grid md:grid-cols-3 gap-8 mb-16"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           >
             {consultationTypes.map((type) => (
               <motion.div
@@ -101,12 +112,9 @@ export default function Booking() {
                   <type.icon className="w-6 h-6 text-navy" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-navy mb-2">{type.title}</h3>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="flex items-center gap-1 text-sm text-slate-text">
-                    <Clock className="w-3.5 h-3.5" /> {type.duration}
-                  </span>
-                  <span className="text-sm font-semibold text-gold">{type.price}</span>
-                </div>
+                <span className="inline-flex items-center gap-1 text-sm text-slate-text mb-4">
+                  <Clock className="w-3.5 h-3.5" /> {type.duration}
+                </span>
                 <p className="text-slate-text text-sm leading-relaxed">{type.desc}</p>
               </motion.div>
             ))}

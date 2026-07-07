@@ -14,12 +14,12 @@ const stagger = {
 };
 
 const faqs = [
-  { q: "How much do your services cost?", a: "Our pricing depends on the size and complexity of your business. We offer transparent, fixed-price packages starting from £99/month. Book a free discovery call to get a tailored quote." },
+  { q: "How much do your services cost?", a: "Pricing depends on which service fits your business. Book a 1:1 call and we'll give you a clear quote." },
   { q: "Do I need to be based in the UK?", a: "We primarily serve UK-based businesses, but we can work with international clients who have UK tax obligations or want to set up a UK company." },
   { q: "How quickly can you get started?", a: "We can typically onboard new clients within 1-2 weeks. For urgent matters, we offer expedited onboarding." },
   { q: "What accounting software do you use?", a: "We're proficient in Xero, QuickBooks, FreeAgent, and Sage. We'll recommend the best fit for your business during our initial consultation." },
   { q: "Can I switch from my current accountant?", a: "Absolutely. We handle the entire transition process, including contacting your previous accountant and transferring all records seamlessly." },
-  { q: "Do you offer one-off services?", a: "Yes! While most clients prefer ongoing support, we also offer one-off services like tax returns, company formations, and financial health checks." },
+  { q: "Do you offer one-off services?", a: "Yes! Alongside our ongoing Bookkeeping Boost packages, we offer one-off services including business registration and a Finance Check Up." },
 ];
 
 export default function Contact() {

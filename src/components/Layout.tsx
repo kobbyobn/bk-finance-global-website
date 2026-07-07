@@ -9,12 +9,11 @@ const navLinks = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "Bookkeeping", href: "/services#bookkeeping" },
-      { label: "Payroll", href: "/services#payroll" },
-      { label: "VAT Returns", href: "/services#vat" },
-      { label: "Year-End Accounts", href: "/services#year-end" },
-      { label: "Business Advisory", href: "/services#advisory" },
-      { label: "Tax Planning", href: "/services#tax" },
+      { label: "6-Month Bookkeeping Boost", href: "/services#6-month-boost" },
+      { label: "12-Month Bookkeeping Boost", href: "/services#12-month-boost" },
+      { label: "Registering Your Business", href: "/services#business-registration" },
+      { label: "Finance Check Up", href: "/services#finance-check-up" },
+      { label: "Book a 1:1 Call", href: "/services#1-1-call" },
     ],
   },
   {
@@ -239,7 +238,7 @@ function Footer() {
               Services
             </h4>
             <ul className="space-y-3">
-              {["Bookkeeping", "Payroll", "VAT Returns", "Year-End Accounts", "Business Advisory", "Tax Planning"].map((s) => (
+              {["6-Month Bookkeeping Boost", "12-Month Bookkeeping Boost", "Registering Your Business", "Finance Check Up", "Book a 1:1 Call"].map((s) => (
                 <li key={s}>
                   <Link href="/services" className="text-sm text-white/60 hover:text-white transition-colors">
                     {s}

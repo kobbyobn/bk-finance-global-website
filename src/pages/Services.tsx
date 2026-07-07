@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   BookOpen,
-  Users,
+  TrendingUp,
   FileText,
   Calculator,
-  TrendingUp,
-  Shield,
+  Phone,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -23,58 +22,49 @@ const stagger = {
 
 const services = [
   {
-    id: "bookkeeping",
+    id: "6-month-boost",
     icon: BookOpen,
-    title: "Bookkeeping Services",
-    desc: "Accurate, up-to-date books to keep your business on track.",
-    longDesc: "We maintain your financial records with precision, ensuring every transaction is properly categorized and reconciled. Our cloud-based approach means you always have real-time visibility into your business finances.",
-    benefits: ["Monthly reconciliation", "Cloud-based accounting", "Real-time financial visibility", "Dedicated bookkeeper"],
-    whoHelps: "Small businesses, freelancers, and growing companies who need reliable financial records without the overhead of an in-house team.",
+    title: "6-Month Bookkeeping Boost",
+    desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.",
+    longDesc: "A 6-month package for business owners who want dedicated support with their books, budgets, and goals. You get regular 1-1 consultations, a budget planner reviewed monthly by your accountant, and full management of your bookkeeping, backed by weekly check-ins so nothing falls through the cracks.",
+    benefits: ["1-1 consultations", "Budget planner, reviewed monthly", "Weekly check-ins", "Full bookkeeping management", "Monthly performance review", "Business goals & targets", "Meeting debrief notes after every session"],
+    whoHelps: "Business owners who want a dedicated accountant managing their books and finances over the next six months.",
   },
   {
-    id: "payroll",
-    icon: Users,
-    title: "Payroll Services",
-    desc: "Hassle-free payroll management for you and your team.",
-    longDesc: "From calculating wages and deductions to filing RTI submissions with HMRC, we handle every aspect of your payroll. Your team gets paid on time, every time.",
-    benefits: ["PAYE management", "RTI submissions", "Pension auto-enrolment", "Payslip generation"],
-    whoHelps: "Businesses with employees who want to ensure compliance and accuracy without the complexity of managing payroll in-house.",
-  },
-  {
-    id: "vat",
-    icon: FileText,
-    title: "VAT Return Preparation",
-    desc: "We handle your VAT returns accurately and on time.",
-    longDesc: "Never miss a VAT deadline again. We prepare and submit your VAT returns, ensuring you claim everything you're entitled to while remaining fully compliant with HMRC regulations.",
-    benefits: ["Quarterly VAT returns", "MTD compliance", "VAT scheme advice", "Deadline management"],
-    whoHelps: "VAT-registered businesses who want peace of mind knowing their returns are accurate and submitted on time.",
-  },
-  {
-    id: "year-end",
-    icon: Calculator,
-    title: "Year End Accounts & Tax Preparation",
-    desc: "Professional accounts preparation and tax filing made simple.",
-    longDesc: "We prepare your annual accounts and corporation tax returns to the highest standard, ensuring compliance while identifying legitimate ways to minimise your tax liability.",
-    benefits: ["Annual accounts preparation", "Corporation tax returns", "Self-assessment returns", "Tax efficiency planning"],
-    whoHelps: "Limited companies, sole traders, and partnerships who need professional year-end accounts and want to minimise their tax burden legally.",
-  },
-  {
-    id: "advisory",
+    id: "12-month-boost",
     icon: TrendingUp,
-    title: "Business Advisory",
-    desc: "Strategic advice to help you grow and increase profits.",
-    longDesc: "Go beyond the numbers. Our advisory service provides strategic insights, cash flow forecasting, and growth planning to help you make informed decisions that drive your business forward.",
-    benefits: ["Cash flow forecasting", "Growth strategy", "Profit optimisation", "Business planning"],
-    whoHelps: "Ambitious business owners who want a financial partner, not just an accountant — someone who helps them see the bigger picture.",
+    title: "12-Month Bookkeeping Boost",
+    desc: "A full year of bookkeeping, payroll, and VAT support.",
+    longDesc: "Everything in the 6-Month Bookkeeping Boost, extended across a full year, plus payroll and VAT registration handled for you. Built for businesses ready to commit to a longer-term financial partnership.",
+    benefits: ["Everything in the 6-Month Boost", "Payroll: payslips & PAYE submissions", "VAT registration preparation & submission", "12 months of goals and targets", "Monthly performance reviews"],
+    whoHelps: "Growing businesses that want a full year of bookkeeping, payroll, and VAT support in one package.",
   },
   {
-    id: "tax",
-    icon: Shield,
-    title: "Tax Planning",
-    desc: "Proactive tax strategies to keep more of what you earn.",
-    longDesc: "Don't just react to tax — plan for it. We develop bespoke tax strategies that legally minimise your liability, whether you're a sole trader, limited company, or property investor.",
-    benefits: ["Personal tax planning", "Corporate tax strategy", "Dividend planning", "Capital gains advice"],
-    whoHelps: "High-earning professionals, company directors, and property investors who want to structure their affairs tax-efficiently.",
+    id: "business-registration",
+    icon: FileText,
+    title: "Registering Your Business",
+    desc: "Get your company or self-assessment registered, done for you.",
+    longDesc: "Setting up as a sole trader or registering a limited company in the UK, handled from start to finish — from an initial consultation through documentation, submission, and confirmation.",
+    benefits: ["Expert guidance on the right structure", "Fast registration, no red tape", "Tailored to sole traders or limited companies", "Support after registration"],
+    whoHelps: "New entrepreneurs setting up their business for the first time in the UK.",
+  },
+  {
+    id: "finance-check-up",
+    icon: Calculator,
+    title: "Finance Check Up",
+    desc: "A one-off deep dive into your numbers and next steps.",
+    longDesc: "A one-off review of your business finances: a performance review, a budget planner, and clear goals to work towards, with a personal check-in session to walk through it all.",
+    benefits: ["Full performance review", "Budget planner", "Clear financial goals", "One-off check-in session", "Meeting debrief notes"],
+    whoHelps: "Business owners who want an outside perspective on their numbers without committing to an ongoing package.",
+  },
+  {
+    id: "1-1-call",
+    icon: Phone,
+    title: "Book a 1:1 Call",
+    desc: "Direct, personalised financial guidance whenever you need it.",
+    longDesc: "A direct one-to-one call for personalised financial guidance — ask questions, talk through challenges, and get practical advice specific to your business.",
+    benefits: ["Personalised advice", "Financial Q&A", "Business support", "Includes a free budget template"],
+    whoHelps: "Anyone who wants direct, personal guidance without signing up for a package.",
   },
 ];
 
@@ -176,13 +166,13 @@ export default function Services() {
               Not Sure Which Service You Need?
             </h2>
             <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
-              Book a free discovery call and we&apos;ll help you identify exactly what your business needs.
+              Book a 1:1 call and we&apos;ll help you identify exactly what your business needs.
             </p>
             <Link
               href="/booking"
               className="inline-flex items-center px-8 py-4 bg-gold text-navy font-bold rounded-lg hover:bg-gold-light transition-all duration-200 active:scale-[0.97]"
             >
-              Book a Free Discovery Call
+              Book a 1:1 Call
             </Link>
           </motion.div>
         </div>

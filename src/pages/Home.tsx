@@ -27,11 +27,11 @@ const stagger = {
 };
 
 const services = [
-  { icon: BookOpen, title: "Bookkeeping", desc: "Real-time financial clarity, not just data entry.", href: "/services#bookkeeping" },
-  { icon: Users, title: "Payroll", desc: "Your team paid right, on time, every time.", href: "/services#payroll" },
-  { icon: FileText, title: "VAT Returns", desc: "Compliant submissions that maximise your claims.", href: "/services#vat" },
-  { icon: Calculator, title: "Year-End Accounts", desc: "Precision accounts that minimise your tax burden.", href: "/services#year-end" },
-  { icon: TrendingUp, title: "Advisory", desc: "Turn your numbers into strategic decisions.", href: "/services#advisory" },
+  { icon: BookOpen, title: "6-Month Bookkeeping Boost", desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.", href: "/services#6-month-boost" },
+  { icon: TrendingUp, title: "12-Month Bookkeeping Boost", desc: "A full year of bookkeeping, payroll, and VAT support.", href: "/services#12-month-boost" },
+  { icon: FileText, title: "Registering Your Business", desc: "Get your company or self-assessment registered, done for you.", href: "/services#business-registration" },
+  { icon: Calculator, title: "Finance Check Up", desc: "A one-off deep dive into your numbers and next steps.", href: "/services#finance-check-up" },
+  { icon: Phone, title: "Book a 1:1 Call", desc: "Direct, personalised financial guidance whenever you need it.", href: "/services#1-1-call" },
 ];
 
 const steps = [
