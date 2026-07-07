@@ -157,8 +157,25 @@
 .bg-gold-light { background-color: oklch(0.8 0.1 70); }
 .hover\:bg-gold-light:hover { background-color: oklch(0.8 0.1 70); }
 .fill-gold { fill: oklch(0.7 0.12 70); }
-.text-slate-text { color: oklch(0.55 0.02 260); }
+.text-slate-text { color: oklch(0.15 0.03 260); font-weight: 700; }
 .bg-warm-white { background-color: oklch(0.97 0.005 80); }
+
+/* Faded/muted text overrides — every text should read as solid, bold, high-contrast */
+.text-navy\/40,
+.text-navy\/50,
+.text-navy\/60,
+.text-navy\/70,
+.text-navy\/80 {
+  color: oklch(0.15 0.03 260);
+  font-weight: 700;
+}
+.text-white\/40,
+.text-white\/50,
+.text-white\/60,
+.text-white\/70 {
+  color: oklch(1 0 0);
+  font-weight: 700;
+}
 .hover\:bg-warm-white:hover { background-color: oklch(0.97 0.005 80); }
 .shadow-navy\/20 { box-shadow: 0 10px 15px -3px oklch(0.15 0.03 260 / 0.2); }
 .font-display { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
