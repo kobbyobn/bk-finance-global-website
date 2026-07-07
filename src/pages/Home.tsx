@@ -62,98 +62,59 @@ const testimonials = [
 export default function Home() {
   return (
     <Layout>
-      {/* Hero Section — Asymmetric editorial layout */}
-      <section className="relative pt-20 overflow-hidden">
+      {/* Hero Section — Simple, editorial single column */}
+      <section className="pt-32 pb-20">
         <div className="container">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center min-h-[calc(100vh-5rem)] py-16 lg:py-20">
-            {/* Left Content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-              className="relative z-10"
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="max-w-2xl"
+          >
+            <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-[0.15em] mb-4">
+              Assisting Businesses Beyond the Books
+            </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              className="font-display font-extrabold text-[clamp(2.25rem,4.5vw,3.75rem)] text-navy leading-[1.15] mb-8"
             >
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-[2px] bg-gold" />
-                <p className="text-gold font-semibold text-sm uppercase tracking-[0.15em]">
-                  Assisting Businesses Beyond the Books
-                </p>
-              </motion.div>
-              <motion.h1
-                variants={fadeUp}
-                className="font-display font-extrabold text-[clamp(2.5rem,5vw,4.5rem)] text-navy leading-[1.05] mb-6"
-              >
-                YOUR FINANCES.
-                <br />
-                OUR EXPERTISE
-                <span className="text-gold">.</span>
-              </motion.h1>
-              <motion.p
-                variants={fadeUp}
-                className="text-slate-text text-lg max-w-lg mb-8 leading-relaxed"
-              >
-                From bookkeeping to tax compliance, we provide the support you need to run a smarter, more profitable business.
-              </motion.p>
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-10">
-                <Link
-                  href="/booking"
-                  className="inline-flex items-center px-7 py-3.5 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97] shadow-lg shadow-navy/20"
-                >
-                  Book a Free Consultation
-                </Link>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center px-7 py-3.5 border-2 border-navy text-navy font-semibold rounded-lg hover:bg-navy hover:text-white transition-all duration-200 active:scale-[0.97]"
-                >
-                  Our Services
-                </Link>
-              </motion.div>
-              <motion.div variants={fadeUp} className="flex items-center gap-4">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                  ))}
-                </div>
-                <div className="h-4 w-px bg-border" />
-                <span className="text-sm text-navy/70 font-medium">Rated Excellent &middot; 4.9/5 on Trustpilot</span>
-              </motion.div>
+              Stop guessing with your{" "}
+              <span className="underline decoration-4 underline-offset-8" style={{ textDecorationColor: "var(--color-gold)" }}>
+                business finances
+              </span>
+              .
+            </motion.h1>
+
+            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden mb-8 max-w-sm">
+              <img
+                src="/founder.png"
+                alt="Founder of BK Finance Global"
+                className="w-full h-auto object-cover"
+              />
             </motion.div>
 
-            {/* Right Image + Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative hidden lg:block"
+            <motion.p
+              variants={fadeUp}
+              className="text-slate-text text-lg mb-8 leading-relaxed"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/manus-storage/hero-businessman_7ec1d51c.png"
-                  alt="Professional financial advisor"
-                  className="w-full h-auto object-cover"
-                />
-                {/* Subtle gold border accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gold" />
-              </div>
-              {/* Floating stat badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -top-4 -right-4 bg-navy text-white rounded-2xl p-5 shadow-xl border border-gold/20"
+              From bookkeeping to tax compliance, we provide the support you need to run a smarter, more profitable business.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="mb-8">
+              <Link
+                href="/booking"
+                className="inline-flex items-center px-7 py-3.5 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97]"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                    <Users className="w-5 h-5 text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold font-display">500+</p>
-                    <p className="text-xs text-white/70">Businesses Supported</p>
-                  </div>
-                </div>
-              </motion.div>
+                Book a Free Consultation
+              </Link>
             </motion.div>
-          </div>
+
+            <motion.div variants={fadeUp}>
+              <Link href="/services" className="text-sm font-semibold text-navy hover:text-gold transition-colors underline underline-offset-4">
+                See our services
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

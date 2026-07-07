@@ -60,11 +60,7 @@ function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-navy flex items-center justify-center shrink-0">
-              <span className="font-display font-extrabold text-sm text-white tracking-tight">
-                BK
-              </span>
-            </div>
+            <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover" />
             <div className="flex flex-col">
               <span className="font-display font-bold text-lg leading-tight text-navy">
                 BK FINANCE
@@ -204,11 +200,7 @@ function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
-                <span className="font-display font-extrabold text-sm text-gold tracking-tight">
-                  BK
-                </span>
-              </div>
+              <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover border border-white/20" />
               <div>
                 <span className="font-display font-bold text-lg">BK FINANCE</span>
                 <span className="block text-xs tracking-[0.2em] text-white/60 uppercase">

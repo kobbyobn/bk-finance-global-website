@@ -86,8 +86,8 @@ export default function About() {
               className="rounded-2xl overflow-hidden shadow-xl"
             >
               <img
-                src="/manus-storage/about-team_debeb156.png"
-                alt="BK Finance Global team"
+                src="/founder.png"
+                alt="Founder of BK Finance Global"
                 className="w-full h-auto object-cover"
               />
             </motion.div>
