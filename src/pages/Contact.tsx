@@ -22,8 +22,37 @@ const faqs = [
   { q: "Do you offer one-off services?", a: "Yes! Alongside our ongoing Bookkeeping Boost packages, we offer one-off services including business registration and a Finance Check Up." },
 ];
 
+const WEB3FORMS_ACCESS_KEY = "a51660b9-9bdb-445b-8daa-e9bd95d5aecb";
+
 export default function Contact() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+      if (result.success) {
+        toast.success("Message sent! We'll get back to you within 24 hours.");
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please email us directly at bkfinanceltd@gmail.com.");
+      }
+    } catch {
+      toast.error("Something went wrong. Please email us directly at bkfinanceltd@gmail.com.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <Layout>
@@ -62,18 +91,14 @@ export default function Contact() {
             >
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-border/50">
                 <h3 className="font-display font-bold text-2xl text-navy mb-6">Send Us a Message</h3>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    toast.success("Message sent! We'll get back to you within 24 hours.");
-                  }}
-                  className="space-y-5"
-                >
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-navy mb-2">First Name</label>
                       <input
                         type="text"
+                        name="first_name"
                         className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                         placeholder="John"
                         required
@@ -83,6 +108,7 @@ export default function Contact() {
                       <label className="block text-sm font-medium text-navy mb-2">Last Name</label>
                       <input
                         type="text"
+                        name="last_name"
                         className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                         placeholder="Smith"
                         required
@@ -93,6 +119,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-navy mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
                       className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                       placeholder="john@company.com"
                       required
@@ -102,6 +129,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-navy mb-2">Subject</label>
                     <input
                       type="text"
+                      name="subject"
                       className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                       placeholder="How can we help?"
                       required
@@ -110,6 +138,7 @@ export default function Contact() {
                   <div>
                     <label className="block text-sm font-medium text-navy mb-2">Message</label>
                     <textarea
+                      name="message"
                       className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
                       rows={5}
                       placeholder="Tell us about your enquiry..."
@@ -118,9 +147,10 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97]"
+                    disabled={submitting}
+                    className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Message <ArrowRight className="w-4 h-4" />
+                    {submitting ? "Sending..." : "Send Message"} <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
               </div>

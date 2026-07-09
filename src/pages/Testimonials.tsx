@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
-import { Star, Quote, Play } from "lucide-react";
-import { toast } from "sonner";
+import { Star, Quote } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -43,12 +42,6 @@ const testimonials = [
   },
 ];
 
-const outcomes = [
-  { before: "Disorganised books, missed deadlines", after: "Clean records, always compliant", client: "Construction firm" },
-  { before: "Overpaying tax by £12k+", after: "Tax-efficient structure saving £15k/year", client: "E-commerce brand" },
-  { before: "No visibility on cash flow", after: "Monthly forecasts and growth plan", client: "SaaS startup" },
-];
-
 export default function Testimonials() {
   return (
     <Layout>
@@ -74,7 +67,7 @@ export default function Testimonials() {
         </div>
       </section>
 
-      {/* Video Testimonial Placeholder */}
+      {/* Video Testimonial */}
       <section className="py-16">
         <div className="container">
           <motion.div
@@ -82,16 +75,20 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative bg-navy rounded-2xl overflow-hidden aspect-video max-w-4xl mx-auto flex items-center justify-center cursor-pointer group"
-            onClick={() => toast("Video testimonials coming soon!")}
+            className="text-center"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-mid to-navy" />
-            <div className="relative z-10 text-center">
-              <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/30 transition-colors">
-                <Play className="w-8 h-8 text-gold fill-gold" />
-              </div>
-              <p className="text-white font-display font-semibold text-lg">Watch Client Stories</p>
-              <p className="text-white/60 text-sm mt-1">Video testimonials coming soon</p>
+            <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-2">Watch Client Stories</p>
+            <h2 className="font-display font-bold text-2xl text-navy mb-8">Hear It Straight From Our Clients</h2>
+            <div className="rounded-2xl overflow-hidden shadow-sm max-w-[540px] mx-auto">
+              <iframe
+                src="https://www.instagram.com/p/DYzRjIxjAd-/embed"
+                width="100%"
+                height="780"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                title="Client video testimonial on Instagram"
+              />
             </div>
           </motion.div>
         </div>
@@ -137,42 +134,6 @@ export default function Testimonials() {
         </div>
       </section>
 
-      {/* Before & After */}
-      <section className="py-20 bg-warm-white">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl text-navy mb-12 text-center">
-              Real Results, Real Impact
-            </motion.h2>
-            <motion.div variants={stagger} className="grid md:grid-cols-3 gap-8">
-              {outcomes.map((o) => (
-                <motion.div
-                  key={o.client}
-                  variants={fadeUp}
-                  className="bg-white rounded-xl p-8 border border-border/50"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gold mb-4">{o.client}</p>
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-xs text-slate-text uppercase tracking-wider mb-1">Before</p>
-                      <p className="text-navy/70 text-sm line-through">{o.before}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gold uppercase tracking-wider mb-1">After</p>
-                      <p className="text-navy font-medium text-sm">{o.after}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </Layout>
   );
 }

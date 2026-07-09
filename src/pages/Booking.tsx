@@ -51,11 +51,37 @@ const consultationTypes = [
   },
 ];
 
+const WEB3FORMS_ACCESS_KEY = "a51660b9-9bdb-445b-8daa-e9bd95d5aecb";
+
 export default function Booking() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleBook = () => {
-    toast.success("Booking feature coming soon! Please contact us directly to schedule.");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New booking enquiry from BK Finance website");
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+      if (result.success) {
+        toast.success("Message sent! We'll get back to you shortly.");
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please email us directly at bkfinanceltd@gmail.com.");
+      }
+    } catch {
+      toast.error("Something went wrong. Please email us directly at bkfinanceltd@gmail.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -120,7 +146,32 @@ export default function Booking() {
             ))}
           </motion.div>
 
-          {/* Booking Form */}
+          {/* Calendly Scheduling */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto mb-16"
+          >
+            <h3 className="font-display font-bold text-2xl text-navy mb-2 text-center">
+              Pick a Time That Works for You
+            </h3>
+            <p className="text-slate-text text-center mb-6">
+              {selected ? `Booking: ${consultationTypes.find(t => t.id === selected)?.title}` : "Choose a slot below and we'll take it from there."}
+            </p>
+            <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm">
+              <iframe
+                src="https://calendly.com/kobby678/30min?hide_gdpr_banner=1"
+                width="100%"
+                height="700"
+                style={{ border: 0 }}
+                title="Schedule a call with BK Finance"
+              />
+            </div>
+          </motion.div>
+
+          {/* Fallback Message Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -129,21 +180,20 @@ export default function Booking() {
             className="max-w-2xl mx-auto"
           >
             <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-border/50">
-              <h3 className="font-display font-bold text-2xl text-navy mb-6">
-                Schedule Your {selected ? consultationTypes.find(t => t.id === selected)?.title : "Consultation"}
+              <h3 className="font-display font-bold text-2xl text-navy mb-2">
+                Can&apos;t Find a Time?
               </h3>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleBook();
-                }}
-                className="space-y-5"
-              >
+              <p className="text-slate-text text-sm mb-6">
+                Send us a message instead and we&apos;ll get back to you to arrange something that works.
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-navy mb-2">First Name</label>
                     <input
                       type="text"
+                      name="first_name"
                       className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                       placeholder="John"
                       required
@@ -153,6 +203,7 @@ export default function Booking() {
                     <label className="block text-sm font-medium text-navy mb-2">Last Name</label>
                     <input
                       type="text"
+                      name="last_name"
                       className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                       placeholder="Smith"
                       required
@@ -163,6 +214,7 @@ export default function Booking() {
                   <label className="block text-sm font-medium text-navy mb-2">Email</label>
                   <input
                     type="email"
+                    name="email"
                     className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     placeholder="john@company.com"
                     required
@@ -172,6 +224,7 @@ export default function Booking() {
                   <label className="block text-sm font-medium text-navy mb-2">Business Name</label>
                   <input
                     type="text"
+                    name="business_name"
                     className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     placeholder="Your Company Ltd"
                   />
@@ -179,6 +232,7 @@ export default function Booking() {
                 <div>
                   <label className="block text-sm font-medium text-navy mb-2">Message (Optional)</label>
                   <textarea
+                    name="message"
                     className="w-full px-4 py-3 rounded-lg border border-border bg-warm-white/50 text-navy placeholder:text-slate-text/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
                     rows={4}
                     placeholder="Tell us briefly about your business and what you need help with..."
@@ -186,9 +240,10 @@ export default function Booking() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97]"
+                  disabled={submitting}
+                  className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Book Consultation <ArrowRight className="w-4 h-4" />
+                  {submitting ? "Sending..." : "Send Message"} <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             </div>
