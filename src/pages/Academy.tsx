@@ -156,7 +156,7 @@ export default function Academy() {
               Ready to Level Up Your Financial Knowledge?
             </h2>
             <p className="text-slate-text text-lg mb-8 max-w-xl mx-auto">
-              Join hundreds of business owners who are taking control of their finances through BOA Academy.
+              Join the many business owners who are taking control of their finances through BOA Academy.
             </p>
             <button
               onClick={() => toast.info("Portal registration coming soon!")}

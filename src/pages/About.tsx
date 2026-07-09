@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Target, Eye, Heart, Award, ArrowRight } from "lucide-react";
+import { Target, Eye, Heart, Award, ArrowRight, Check } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,11 +19,10 @@ const values = [
   { icon: Award, title: "Excellence", desc: "We hold ourselves to the highest professional standards in the industry." },
 ];
 
-const stats = [
-  { num: "500+", label: "Businesses Supported" },
-  { num: "£2M+", label: "Tax Saved for Clients" },
-  { num: "98%", label: "Client Retention Rate" },
-  { num: "4.9/5", label: "Average Rating" },
+const trustPoints = [
+  "Supporting businesses across the UK",
+  "Real, hands-on financial support",
+  "Consistently excellent client feedback",
 ];
 
 export default function About() {
@@ -70,7 +69,7 @@ export default function About() {
                   We believed there was a better way — combining the expertise and professionalism of a top-tier firm with the personal attention and genuine care of a boutique practice.
                 </p>
                 <p>
-                  Today, we support over 500 businesses across the UK, from solo entrepreneurs to scaling companies. Our team brings together decades of experience in accounting, tax planning, and business advisory.
+                  Today, we support many businesses across the UK, from solo entrepreneurs to scaling companies. Our team brings together decades of experience in accounting, tax planning, and business advisory.
                 </p>
                 <p>
                   But what truly sets us apart isn&apos;t our technical expertise — it&apos;s our commitment to understanding each client&apos;s unique goals and helping them achieve more than they thought possible.
@@ -95,20 +94,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-navy">
+      {/* Trust Points */}
+      <section className="py-10 bg-navy">
         <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex flex-wrap justify-center gap-x-10 gap-y-4"
           >
-            {stats.map((stat) => (
-              <motion.div key={stat.label} variants={fadeUp} className="text-center">
-                <p className="font-display font-extrabold text-3xl sm:text-4xl text-gold mb-2">{stat.num}</p>
-                <p className="text-white/70 text-sm">{stat.label}</p>
+            {trustPoints.map((point) => (
+              <motion.div key={point} variants={fadeUp} className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-gold shrink-0" />
+                <p className="text-white font-semibold text-sm">{point}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -159,7 +158,7 @@ export default function About() {
               Ready to Work With Us?
             </h2>
             <p className="text-slate-text text-lg mb-8 max-w-xl mx-auto">
-              Join hundreds of businesses who trust BK Finance Global with their financial future.
+              Join the many businesses who trust BK Finance Global with their financial future.
             </p>
             <Link
               href="/booking"

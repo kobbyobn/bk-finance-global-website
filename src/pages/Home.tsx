@@ -1,21 +1,7 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import {
-  BookOpen,
-  Users,
-  FileText,
-  Calculator,
-  TrendingUp,
-  Shield,
-  ArrowRight,
-  Star,
-  CheckCircle2,
-  Phone,
-  ClipboardCheck,
-  Lightbulb,
-  HeartHandshake,
-} from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -27,18 +13,18 @@ const stagger = {
 };
 
 const services = [
-  { icon: BookOpen, title: "6-Month Bookkeeping Boost", desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.", href: "/services#6-month-boost" },
-  { icon: TrendingUp, title: "12-Month Bookkeeping Boost", desc: "A full year of bookkeeping, payroll, and VAT support.", href: "/services#12-month-boost" },
-  { icon: FileText, title: "Registering Your Business", desc: "Get your company or self-assessment registered, done for you.", href: "/services#business-registration" },
-  { icon: Calculator, title: "Finance Check Up", desc: "A one-off deep dive into your numbers and next steps.", href: "/services#finance-check-up" },
-  { icon: Phone, title: "Book a 1:1 Call", desc: "Direct, personalised financial guidance whenever you need it.", href: "/services#1-1-call" },
+  { title: "6-Month Bookkeeping Boost", desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.", href: "/services#6-month-boost" },
+  { title: "12-Month Bookkeeping Boost", desc: "A full year of bookkeeping, payroll, and VAT support.", href: "/services#12-month-boost" },
+  { title: "Registering Your Business", desc: "Get your company or self-assessment registered, done for you.", href: "/services#business-registration" },
+  { title: "Finance Check Up", desc: "A one-off deep dive into your numbers and next steps.", href: "/services#finance-check-up" },
+  { title: "Book a 1:1 Call", desc: "Direct, personalised financial guidance whenever you need it.", href: "/services#1-1-call" },
 ];
 
 const steps = [
-  { icon: Phone, num: "01", title: "Book a Call", desc: "Choose a time that works for you." },
-  { icon: ClipboardCheck, num: "02", title: "We Review", desc: "We assess your business and finances." },
-  { icon: Lightbulb, num: "03", title: "We Recommend", desc: "A tailored plan to save you time and money." },
-  { icon: HeartHandshake, num: "04", title: "We Support", desc: "We handle the numbers so you can grow." },
+  { num: "01", title: "Book a Call", desc: "Choose a time that works for you." },
+  { num: "02", title: "We Review", desc: "We assess your business and finances." },
+  { num: "03", title: "We Recommend", desc: "A tailored plan to save you time and money." },
+  { num: "04", title: "We Support", desc: "We handle the numbers so you can grow." },
 ];
 
 const testimonials = [
@@ -119,8 +105,7 @@ export default function Home() {
       </section>
 
       {/* Services — Asymmetric layout with gold accent line */}
-      <section className="py-24 bg-warm-white relative">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <section className="py-24 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -146,16 +131,14 @@ export default function Home() {
             </div>
 
             <motion.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-              {services.map((service) => (
+              {services.map((service, i) => (
                 <motion.div
                   key={service.title}
                   variants={fadeUp}
                   className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border/50 relative overflow-hidden"
                 >
                   <div className="absolute top-0 left-0 w-full h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                  <div className="w-11 h-11 rounded-lg bg-navy/5 flex items-center justify-center mb-4 group-hover:bg-gold/10 transition-colors">
-                    <service.icon className="w-5 h-5 text-navy group-hover:text-gold transition-colors" />
-                  </div>
+                  <p className="font-display font-bold text-gold text-sm mb-4">0{i + 1}</p>
                   <h3 className="font-display font-semibold text-navy text-sm mb-2">
                     {service.title}
                   </h3>
@@ -262,31 +245,24 @@ export default function Home() {
                 <motion.p variants={fadeUp} className="text-slate-text text-lg leading-relaxed mb-8">
                   We combine the precision of traditional accounting with the innovation of modern fintech — so you get both reliability and growth.
                 </motion.p>
-                {/* Large stat */}
-                <motion.div variants={fadeUp} className="bg-navy rounded-xl p-6 inline-block">
-                  <p className="font-display font-extrabold text-4xl text-gold mb-1">98%</p>
-                  <p className="text-white/70 text-sm">Client Retention Rate</p>
-                </motion.div>
               </div>
 
               {/* Right — features grid */}
               <motion.div variants={stagger} className="grid sm:grid-cols-2 gap-5">
                 {[
-                  { icon: Shield, title: "Trusted & Reliable", desc: "Hundreds of businesses trust us with their finances. Consistent, accurate results every time." },
-                  { icon: TrendingUp, title: "Growth-Focused", desc: "We don't just manage your books — we identify opportunities to grow and save." },
-                  { icon: Users, title: "Personal Service", desc: "Every client gets a dedicated team member who knows their business inside out." },
-                  { icon: CheckCircle2, title: "HMRC Compliant", desc: "Stay on the right side of regulations with our expert UK tax knowledge." },
-                  { icon: Calculator, title: "Transparent Pricing", desc: "No hidden fees. Clear, fixed-price packages tailored to your business." },
-                  { icon: Lightbulb, title: "Proactive Advice", desc: "We anticipate problems before they arise and keep you informed every step." },
+                  { title: "Trusted & Reliable", desc: "Many businesses trust us with their finances. Consistent, accurate results every time." },
+                  { title: "Growth-Focused", desc: "We don't just manage your books — we identify opportunities to grow and save." },
+                  { title: "Personal Service", desc: "Every client gets a dedicated team member who knows their business inside out." },
+                  { title: "HMRC Compliant", desc: "Stay on the right side of regulations with our expert UK tax knowledge." },
+                  { title: "Transparent Pricing", desc: "No hidden fees. Clear, fixed-price packages tailored to your business." },
+                  { title: "Proactive Advice", desc: "We anticipate problems before they arise and keep you informed every step." },
                 ].map((item) => (
                   <motion.div
                     key={item.title}
                     variants={fadeUp}
                     className="bg-warm-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-border/30"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                      <item.icon className="w-5 h-5 text-gold" />
-                    </div>
+                    <div className="w-6 h-[2px] bg-gold mb-4" />
                     <h3 className="font-display font-semibold text-navy text-base mb-2">{item.title}</h3>
                     <p className="text-slate-text text-sm leading-relaxed">{item.desc}</p>
                   </motion.div>
@@ -298,8 +274,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials — Editorial with large quote */}
-      <section className="py-24 bg-warm-white relative">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <section className="py-24 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -369,7 +344,6 @@ export default function Home() {
             className="bg-navy rounded-2xl p-12 lg:p-20 relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 right-0 h-1 bg-gold" />
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
             <div className="relative z-10 max-w-2xl">
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-5 leading-tight">
                 Ready to Take Control of Your Business Finances?
