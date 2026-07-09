@@ -271,14 +271,14 @@ function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 text-gold" />
-                <a href="mailto:info@bkfinanceglobal.com" className="text-sm text-white/60 hover:text-white transition-colors">
-                  info@bkfinanceglobal.com
+                <a href="mailto:bkfinanceltd@gmail.com" className="text-sm text-white/60 hover:text-white transition-colors">
+                  bkfinanceltd@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-0.5 text-gold" />
-                <a href="tel:+44000000000" className="text-sm text-white/60 hover:text-white transition-colors">
-                  +44 (0) 000 000 000
+                <a href="tel:+447478729672" className="text-sm text-white/60 hover:text-white transition-colors">
+                  +44 7478 729672
                 </a>
               </li>
               <li className="flex items-start gap-3">

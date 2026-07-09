@@ -29,8 +29,8 @@ export default class ErrorBoundary extends Component<Props, State> {
             </h1>
             <p className="text-slate-text">
               Please refresh the page. If the problem persists, contact us at{" "}
-              <a href="mailto:info@bkfinanceglobal.com" className="text-gold underline">
-                info@bkfinanceglobal.com
+              <a href="mailto:bkfinanceltd@gmail.com" className="text-gold underline">
+                bkfinanceltd@gmail.com
               </a>
               .
             </p>

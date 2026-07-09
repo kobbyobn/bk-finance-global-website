@@ -143,8 +143,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-navy mb-1">Email</p>
-                      <a href="mailto:info@bkfinanceglobal.com" className="text-slate-text hover:text-gold transition-colors">
-                        info@bkfinanceglobal.com
+                      <a href="mailto:bkfinanceltd@gmail.com" className="text-slate-text hover:text-gold transition-colors">
+                        bkfinanceltd@gmail.com
                       </a>
                     </div>
                   </div>
@@ -154,8 +154,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-navy mb-1">Phone</p>
-                      <a href="tel:+44000000000" className="text-slate-text hover:text-gold transition-colors">
-                        +44 (0) 000 000 000
+                      <a href="tel:+447478729672" className="text-slate-text hover:text-gold transition-colors">
+                        +44 7478 729672
                       </a>
                     </div>
                   </div>
