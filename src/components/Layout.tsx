@@ -209,7 +209,9 @@ function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              Assisting Businesses Beyond the Books. Premium accounting, tax, and advisory services for ambitious businesses.
+              Assisting Businesses Beyond the Books.
+              <br />
+              Premium accounting, tax, and advisory services for ambitious businesses.
             </p>
             <div className="flex gap-4 pt-2">
               <a href="https://www.instagram.com/bkfinance_global/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
