@@ -20,7 +20,7 @@ export default function Masterclasses() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-2xl"
+            className="max-w-2xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Masterclasses

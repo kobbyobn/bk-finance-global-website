@@ -19,7 +19,7 @@ const faqs = [
   { q: "How quickly can you get started?", a: "We can typically onboard new clients within 1-2 weeks. For urgent matters, we offer expedited onboarding." },
   { q: "What accounting software do you use?", a: "We're proficient in Xero, QuickBooks, FreeAgent, and Sage. We'll recommend the best fit for your business during our initial consultation." },
   { q: "Can I switch from my current accountant?", a: "Absolutely. We handle the entire transition process, including contacting your previous accountant and transferring all records seamlessly." },
-  { q: "Do you offer one-off services?", a: "Yes! Alongside our ongoing Bookkeeping Boost packages, we offer one-off services including business registration and a Finance Check Up." },
+  { q: "Do you offer one-off services?", a: "Yes! Alongside our ongoing Accounts Preparation Management packages, we offer one-off services including business registration and a Finance Check Up." },
 ];
 
 const WEB3FORMS_ACCESS_KEY = "a51660b9-9bdb-445b-8daa-e9bd95d5aecb";
@@ -63,7 +63,7 @@ export default function Contact() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Contact Us

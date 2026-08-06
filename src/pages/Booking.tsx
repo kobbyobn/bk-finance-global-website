@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
+import CookieGate from "@/components/CookieGate";
 import { motion } from "framer-motion";
-import { BookOpen, TrendingUp, FileText, Calculator, Phone, ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import { BookOpen, FileText, Calculator, Phone, Landmark, Receipt, FileSpreadsheet, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -15,18 +16,11 @@ const stagger = {
 
 const consultationTypes = [
   {
-    id: "6-month-boost",
-    title: "6-Month Bookkeeping Boost",
-    duration: "6 months",
-    desc: "Dedicated bookkeeping support, monthly budget reviews, and weekly check-ins over half a year.",
+    id: "accounts-preparation-management",
+    title: "Accounts Preparation Management",
+    duration: "6 or 12 months",
+    desc: "Dedicated bookkeeping, monthly budget reviews, and weekly check-ins on a 6 or 12-month term. The 12-month term also includes payroll and VAT registration.",
     icon: BookOpen,
-  },
-  {
-    id: "12-month-boost",
-    title: "12-Month Bookkeeping Boost",
-    duration: "12 months",
-    desc: "A full year of bookkeeping, plus payroll and VAT registration handled for you.",
-    icon: TrendingUp,
   },
   {
     id: "business-registration",
@@ -34,6 +28,20 @@ const consultationTypes = [
     duration: "One-off",
     desc: "Sole trader or limited company registration, handled from consultation through to confirmation.",
     icon: FileText,
+  },
+  {
+    id: "vat-return",
+    title: "VAT Return",
+    duration: "Ongoing",
+    desc: "VAT registration, quarterly returns, and full HMRC compliance handled for you.",
+    icon: Receipt,
+  },
+  {
+    id: "mtd-income-tax",
+    title: "MTD Income Tax",
+    duration: "Ongoing",
+    desc: "Making Tax Digital for Income Tax — digital record-keeping and quarterly HMRC submissions.",
+    icon: FileSpreadsheet,
   },
   {
     id: "finance-check-up",
@@ -48,6 +56,13 @@ const consultationTypes = [
     duration: "Consultation",
     desc: "Direct, personalised financial guidance for whatever's on your mind.",
     icon: Phone,
+  },
+  {
+    id: "tide-account",
+    title: "Open a Tide Business Account",
+    duration: "Consultation",
+    desc: "We'll walk you through opening a business account with our banking partner, Tide.",
+    icon: Landmark,
   },
 ];
 
@@ -93,7 +108,7 @@ export default function Booking() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Book a Consultation
@@ -160,15 +175,17 @@ export default function Booking() {
             <p className="text-slate-text text-center mb-6">
               {selected ? `Booking: ${consultationTypes.find(t => t.id === selected)?.title}` : "Choose a slot below and we'll take it from there."}
             </p>
-            <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm">
-              <iframe
-                src="https://calendly.com/kobby678/30min?hide_gdpr_banner=1"
-                width="100%"
-                height="700"
-                style={{ border: 0 }}
-                title="Schedule a call with BK Finance"
-              />
-            </div>
+            <CookieGate label="Booking calendar">
+              <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm">
+                <iframe
+                  src="https://calendly.com/kobby678/30min?hide_gdpr_banner=1"
+                  width="100%"
+                  height="700"
+                  style={{ border: 0 }}
+                  title="Schedule a call with BK Finance"
+                />
+              </div>
+            </CookieGate>
           </motion.div>
 
           {/* Fallback Message Form */}

@@ -1,15 +1,8 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import {
-  BookOpen,
-  TrendingUp,
-  FileText,
-  Calculator,
-  Phone,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { services } from "@/data/services";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,54 +12,6 @@ const fadeUp = {
 const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
-
-const services = [
-  {
-    id: "6-month-boost",
-    icon: BookOpen,
-    title: "6-Month Bookkeeping Boost",
-    desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.",
-    longDesc: "A 6-month package for business owners who want dedicated support with their books, budgets, and goals. You get regular 1-1 consultations, a budget planner reviewed monthly by your accountant, and full management of your bookkeeping, backed by weekly check-ins so nothing falls through the cracks.",
-    benefits: ["1-1 consultations", "Budget planner, reviewed monthly", "Weekly check-ins", "Full bookkeeping management", "Monthly performance review", "Business goals & targets", "Meeting debrief notes after every session"],
-    whoHelps: "Business owners who want a dedicated accountant managing their books and finances over the next six months.",
-  },
-  {
-    id: "12-month-boost",
-    icon: TrendingUp,
-    title: "12-Month Bookkeeping Boost",
-    desc: "A full year of bookkeeping, payroll, and VAT support.",
-    longDesc: "Everything in the 6-Month Bookkeeping Boost, extended across a full year, plus payroll and VAT registration handled for you. Built for businesses ready to commit to a longer-term financial partnership.",
-    benefits: ["Everything in the 6-Month Boost", "Payroll: payslips & PAYE submissions", "VAT registration preparation & submission", "12 months of goals and targets", "Monthly performance reviews"],
-    whoHelps: "Growing businesses that want a full year of bookkeeping, payroll, and VAT support in one package.",
-  },
-  {
-    id: "business-registration",
-    icon: FileText,
-    title: "Registering Your Business",
-    desc: "Get your company or self-assessment registered, done for you.",
-    longDesc: "Setting up as a sole trader or registering a limited company in the UK, handled from start to finish — from an initial consultation through documentation, submission, and confirmation.",
-    benefits: ["Expert guidance on the right structure", "Fast registration, no red tape", "Tailored to sole traders or limited companies", "Support after registration"],
-    whoHelps: "New entrepreneurs setting up their business for the first time in the UK.",
-  },
-  {
-    id: "finance-check-up",
-    icon: Calculator,
-    title: "Finance Check Up",
-    desc: "A one-off deep dive into your numbers and next steps.",
-    longDesc: "A one-off review of your business finances: a performance review, a budget planner, and clear goals to work towards, with a personal check-in session to walk through it all.",
-    benefits: ["Full performance review", "Budget planner", "Clear financial goals", "One-off check-in session", "Meeting debrief notes"],
-    whoHelps: "Business owners who want an outside perspective on their numbers without committing to an ongoing package.",
-  },
-  {
-    id: "1-1-call",
-    icon: Phone,
-    title: "Book a 1:1 Call",
-    desc: "Direct, personalised financial guidance whenever you need it.",
-    longDesc: "A direct one-to-one call for personalised financial guidance — ask questions, talk through challenges, and get practical advice specific to your business.",
-    benefits: ["Personalised advice", "Financial Q&A", "Business support", "Includes a free budget template"],
-    whoHelps: "Anyone who wants direct, personal guidance without signing up for a package.",
-  },
-];
 
 export default function Services() {
   return (
@@ -78,7 +23,7 @@ export default function Services() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Our Services
@@ -96,59 +41,37 @@ export default function Services() {
       {/* Services Grid */}
       <section className="py-20">
         <div className="container">
-          <div className="space-y-24">
-            {services.map((service, index) => (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {services.map((service) => (
               <motion.div
                 key={service.id}
-                id={service.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={stagger}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                variants={fadeUp}
+                className="group bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border/50"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <motion.div variants={fadeUp}>
-                    <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6">
-                      <service.icon className="w-7 h-7 text-gold" />
-                    </div>
-                    <h2 className="font-display font-bold text-2xl sm:text-3xl text-navy mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-slate-text text-lg leading-relaxed mb-6">
-                      {service.longDesc}
-                    </p>
-                    <p className="text-sm text-navy/60 italic mb-6">
-                      <strong>Who it helps:</strong> {service.whoHelps}
-                    </p>
-                    <Link
-                      href="/booking"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97]"
-                    >
-                      Get Started <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </motion.div>
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-gold" />
                 </div>
-
-                <motion.div
-                  variants={fadeUp}
-                  className={`bg-warm-white rounded-2xl p-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
+                <h3 className="font-display font-bold text-xl text-navy mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-slate-text text-sm leading-relaxed mb-6">
+                  {service.desc}
+                </p>
+                <Link
+                  href={`/services/${service.id}`}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-gold transition-colors"
                 >
-                  <h4 className="font-display font-semibold text-navy mb-6">Key Benefits</h4>
-                  <div className="space-y-4">
-                    {service.benefits.map((benefit) => (
-                      <div key={benefit} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-gold shrink-0" />
-                        <span className="text-navy/80">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

@@ -46,7 +46,7 @@ export default function Partnerships() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Partnerships

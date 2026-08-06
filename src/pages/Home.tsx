@@ -13,11 +13,12 @@ const stagger = {
 };
 
 const services = [
-  { title: "6-Month Bookkeeping Boost", desc: "Hands-on bookkeeping, budgeting, and goal-setting for half a year.", href: "/services#6-month-boost" },
-  { title: "12-Month Bookkeeping Boost", desc: "A full year of bookkeeping, payroll, and VAT support.", href: "/services#12-month-boost" },
-  { title: "Registering Your Business", desc: "Get your company or self-assessment registered, done for you.", href: "/services#business-registration" },
-  { title: "Finance Check Up", desc: "A one-off deep dive into your numbers and next steps.", href: "/services#finance-check-up" },
-  { title: "Book a 1:1 Call", desc: "Direct, personalised financial guidance whenever you need it.", href: "/services#1-1-call" },
+  { title: "Accounts Preparation Management", desc: "Hands-on bookkeeping, budgeting, and account management on a 6 or 12-month term.", href: "/services/accounts-preparation-management" },
+  { title: "Registering Your Business", desc: "Get your company or self-assessment registered, done for you.", href: "/services/business-registration" },
+  { title: "VAT Return", desc: "VAT registration, quarterly returns, and full HMRC compliance handled for you.", href: "/services/vat-return" },
+  { title: "MTD Income Tax", desc: "Making Tax Digital for Income Tax, handled for you.", href: "/services/mtd-income-tax" },
+  { title: "Finance Check Up", desc: "A one-off deep dive into your numbers and next steps.", href: "/services/finance-check-up" },
+  { title: "Book a 1:1 Call", desc: "Direct, personalised financial guidance whenever you need it.", href: "/services/1-1-call" },
 ];
 
 const steps = [
@@ -55,14 +56,14 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-2xl"
+            className="text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-[0.15em] mb-4">
               Assisting Businesses Beyond the Books
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="font-display font-extrabold text-[clamp(2.25rem,4.5vw,3.75rem)] text-navy leading-[1.15] mb-8"
+              className="font-display font-extrabold text-[clamp(2.25rem,5.5vw,4.5rem)] text-navy leading-[1.15] mb-8"
             >
               Stop guessing with your{" "}
               <span className="underline decoration-4 underline-offset-8" style={{ textDecorationColor: "var(--color-gold)" }}>
@@ -71,7 +72,7 @@ export default function Home() {
               .
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden mb-8 max-w-sm">
+            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden mb-8 max-w-sm mx-auto">
               <img
                 src="/founder.png"
                 alt="Founder of BK Finance Global"
@@ -81,7 +82,7 @@ export default function Home() {
 
             <motion.p
               variants={fadeUp}
-              className="text-slate-text text-lg mb-8 leading-relaxed"
+              className="text-slate-text text-lg mb-8 leading-relaxed max-w-2xl mx-auto"
             >
               From bookkeeping to tax compliance, we provide the support you need to run a smarter, more profitable business.
             </motion.p>
@@ -115,10 +116,7 @@ export default function Home() {
           >
             <div className="flex items-end justify-between mb-14">
               <div>
-                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-[2px] bg-gold" />
-                  <p className="text-sm font-semibold uppercase tracking-[0.15em] text-navy/60">How We Can Help</p>
-                </motion.div>
+                <motion.p variants={fadeUp} className="text-sm font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">How We Can Help</motion.p>
                 <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-navy">
                   Comprehensive Financial Services
                 </motion.h2>
@@ -130,7 +128,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            <motion.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            <motion.div variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {services.map((service, i) => (
                 <motion.div
                   key={service.title}
@@ -169,10 +167,7 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               variants={stagger}
             >
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-[2px] bg-gold" />
-                <p className="text-sm font-semibold uppercase tracking-[0.15em] text-gold">How It Works</p>
-              </motion.div>
+              <motion.p variants={fadeUp} className="text-sm font-semibold uppercase tracking-[0.15em] text-gold mb-4">How It Works</motion.p>
               <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
                 From Chaos to Clarity in Four Steps
               </motion.h2>
@@ -235,10 +230,7 @@ export default function Home() {
             <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 items-start">
               {/* Left — sticky headline */}
               <div className="lg:sticky lg:top-32">
-                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-[2px] bg-gold" />
-                  <p className="text-sm font-semibold uppercase tracking-[0.15em] text-gold">Why Choose Us</p>
-                </motion.div>
+                <motion.p variants={fadeUp} className="text-sm font-semibold uppercase tracking-[0.15em] text-gold mb-3">Why Choose Us</motion.p>
                 <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-navy mb-6">
                   Built for Ambitious Businesses
                 </motion.h2>
@@ -262,7 +254,6 @@ export default function Home() {
                     variants={fadeUp}
                     className="bg-warm-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-border/30"
                   >
-                    <div className="w-6 h-[2px] bg-gold mb-4" />
                     <h3 className="font-display font-semibold text-navy text-base mb-2">{item.title}</h3>
                     <p className="text-slate-text text-sm leading-relaxed">{item.desc}</p>
                   </motion.div>
@@ -284,10 +275,7 @@ export default function Home() {
           >
             <div className="flex items-end justify-between mb-14">
               <div>
-                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-[2px] bg-gold" />
-                  <p className="text-sm font-semibold uppercase tracking-[0.15em] text-navy/60">Trusted by Business Owners</p>
-                </motion.div>
+                <motion.p variants={fadeUp} className="text-sm font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">Trusted by Business Owners</motion.p>
                 <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-navy">
                   What Our Clients Say
                 </motion.h2>

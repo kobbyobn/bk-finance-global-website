@@ -39,9 +39,9 @@ export default function Academy() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
-            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center">
                 <GraduationCap className="w-6 h-6 text-gold" />
               </div>
@@ -53,7 +53,7 @@ export default function Academy() {
             <motion.p variants={fadeUp} className="text-white/70 text-lg leading-relaxed mb-8">
               The BOA Academy is your premium learning platform for financial education. Gain the knowledge and confidence to make smarter financial decisions.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
               <button
                 onClick={() => toast.info("Portal login coming soon!")}
                 className="inline-flex items-center px-7 py-3.5 bg-gold text-navy font-bold rounded-lg hover:bg-gold-light transition-all duration-200 active:scale-[0.97]"

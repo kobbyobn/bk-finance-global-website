@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import CookieGate from "@/components/CookieGate";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
@@ -52,7 +53,7 @@ export default function Testimonials() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Testimonials
@@ -79,16 +80,20 @@ export default function Testimonials() {
           >
             <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-2">Watch Client Stories</p>
             <h2 className="font-display font-bold text-2xl text-navy mb-8">Hear It Straight From Our Clients</h2>
-            <div className="rounded-2xl overflow-hidden shadow-sm max-w-[540px] mx-auto">
-              <iframe
-                src="https://www.instagram.com/p/DYzRjIxjAd-/embed"
-                width="100%"
-                height="780"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen
-                title="Client video testimonial on Instagram"
-              />
+            <div className="max-w-[540px] mx-auto">
+              <CookieGate label="Video testimonial">
+                <div className="rounded-2xl overflow-hidden shadow-sm">
+                  <iframe
+                    src="https://www.instagram.com/p/DYzRjIxjAd-/embed"
+                    width="100%"
+                    height="780"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    allowFullScreen
+                    title="Client video testimonial on Instagram"
+                  />
+                </div>
+              </CookieGate>
             </div>
           </motion.div>
         </div>

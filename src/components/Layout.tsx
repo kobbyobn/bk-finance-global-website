@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, Landmark, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -9,11 +9,12 @@ const navLinks = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "6-Month Bookkeeping Boost", href: "/services#6-month-boost" },
-      { label: "12-Month Bookkeeping Boost", href: "/services#12-month-boost" },
-      { label: "Registering Your Business", href: "/services#business-registration" },
-      { label: "Finance Check Up", href: "/services#finance-check-up" },
-      { label: "Book a 1:1 Call", href: "/services#1-1-call" },
+      { label: "Accounts Preparation Management", href: "/services/accounts-preparation-management" },
+      { label: "Registering Your Business", href: "/services/business-registration" },
+      { label: "VAT Return", href: "/services/vat-return" },
+      { label: "MTD Income Tax", href: "/services/mtd-income-tax" },
+      { label: "Finance Check Up", href: "/services/finance-check-up" },
+      { label: "Book a 1:1 Call", href: "/services/1-1-call" },
     ],
   },
   {
@@ -22,8 +23,8 @@ const navLinks = [
     children: [
       { label: "BOA Academy", href: "/academy" },
       { label: "Masterclasses", href: "/masterclasses" },
+      { label: "Latest News", href: "/news" },
       { label: "Testimonials", href: "/testimonials" },
-      { label: "Reviews", href: "/reviews" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -35,6 +36,7 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -46,6 +48,7 @@ function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
+    setMobileSubOpen(null);
   }, [location]);
 
   return (
@@ -63,9 +66,9 @@ function Header() {
             <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover" />
             <div className="flex flex-col">
               <span className="font-display font-bold text-lg leading-tight text-navy">
-                BK FINANCE
+                BK Finance
               </span>
-              <span className="font-display text-xs tracking-[0.2em] text-navy/70 uppercase">
+              <span className="font-display text-xs text-navy/70">
                 Global
               </span>
             </div>
@@ -155,25 +158,49 @@ function Header() {
             <nav className="container py-6 space-y-1">
               {navLinks.map((link) => (
                 <div key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="block px-4 py-3 text-navy font-medium rounded-lg hover:bg-warm-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                  {link.children && (
-                    <div className="pl-8 space-y-1">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-sm text-navy/70 hover:text-gold transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div className="flex items-center">
+                    <Link
+                      href={link.href}
+                      className="flex-1 block px-4 py-3 text-navy font-medium rounded-lg hover:bg-warm-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                    {link.children && (
+                      <button
+                        onClick={() =>
+                          setMobileSubOpen(mobileSubOpen === link.label ? null : link.label)
+                        }
+                        className="p-3 text-navy"
+                        aria-label={`Toggle ${link.label} submenu`}
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            mobileSubOpen === link.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {link.children && mobileSubOpen === link.label && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-8 space-y-1 overflow-hidden"
+                      >
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="block px-4 py-2 text-sm text-navy/70 hover:text-gold transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
               <div className="pt-4">
@@ -202,8 +229,8 @@ function Footer() {
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover border border-white/20" />
               <div>
-                <span className="font-display font-bold text-lg">BK FINANCE</span>
-                <span className="block text-xs tracking-[0.2em] text-white/60 uppercase">
+                <span className="font-display font-bold text-lg">BK Finance</span>
+                <span className="block text-xs text-white/60">
                   Global
                 </span>
               </div>
@@ -226,10 +253,17 @@ function Footer() {
               Services
             </h4>
             <ul className="space-y-3">
-              {["6-Month Bookkeeping Boost", "12-Month Bookkeeping Boost", "Registering Your Business", "Finance Check Up", "Book a 1:1 Call"].map((s) => (
-                <li key={s}>
-                  <Link href="/services" className="text-sm text-white/60 hover:text-white transition-colors">
-                    {s}
+              {[
+                { label: "Accounts Preparation Management", slug: "accounts-preparation-management" },
+                { label: "Registering Your Business", slug: "business-registration" },
+                { label: "VAT Return", slug: "vat-return" },
+                { label: "MTD Income Tax", slug: "mtd-income-tax" },
+                { label: "Finance Check Up", slug: "finance-check-up" },
+                { label: "Book a 1:1 Call", slug: "1-1-call" },
+              ].map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="text-sm text-white/60 hover:text-white transition-colors">
+                    {s.label}
                   </Link>
                 </li>
               ))}
@@ -244,8 +278,8 @@ function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
+                { label: "Latest News", href: "/news" },
                 { label: "Testimonials", href: "/testimonials" },
-                { label: "Reviews", href: "/reviews" },
                 { label: "Partnerships", href: "/partnerships" },
                 { label: "BOA Academy", href: "/academy" },
                 { label: "Contact", href: "/contact" },
@@ -287,14 +321,36 @@ function Footer() {
           </div>
         </div>
 
+        {/* Affiliations & Partnerships */}
+        <div className="mt-16 pt-10 border-t border-white/10">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center bg-white rounded-lg px-4 py-3 border border-white/10">
+              <img src="/partners/freeagent-badge.png" alt="FreeAgent Accredited Practitioner 2026" className="h-8 w-auto" />
+            </div>
+            <Link
+              href="/booking"
+              className="flex items-center gap-2 bg-white/5 rounded-lg px-4 py-3 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors"
+              title="Schedule a call to open a Tide business account with us"
+            >
+              <Landmark className="w-4 h-4 text-gold shrink-0" />
+              <span className="text-sm text-white/70">Tide Bank Affiliate Partner</span>
+            </Link>
+            <div className="flex items-center gap-2 bg-white/5 rounded-lg px-4 py-3 border border-white/10">
+              <GraduationCap className="w-4 h-4 text-gold shrink-0" />
+              <span className="text-sm text-white/70">BOA Academy Partner</span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/40">
             &copy; {new Date().getFullYear()} BK Finance Global. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-white/40 hover:text-white/70 transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="text-sm text-white/40 hover:text-white/70 transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="text-sm text-white/40 hover:text-white/70 transition-colors">Terms of Service</Link>
+            <Link href="/cookie-policy" className="text-sm text-white/40 hover:text-white/70 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

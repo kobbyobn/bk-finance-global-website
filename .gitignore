@@ -4,3 +4,7 @@ node_modules/
 *.log
 dist/
 .claude/settings.local.json
+
+.vercel
+.env*
+tsconfig.tsbuildinfo

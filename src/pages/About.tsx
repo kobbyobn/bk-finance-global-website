@@ -35,7 +35,7 @@ export default function About() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            className="max-w-3xl"
+            className="max-w-3xl mx-auto text-center"
           >
             <motion.p variants={fadeUp} className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               About Us
@@ -91,6 +91,32 @@ export default function About() {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-20 bg-warm-white">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl text-navy mb-6">
+              Our Mission
+            </motion.h2>
+            <motion.div variants={fadeUp} className="space-y-4 text-slate-text leading-relaxed text-left">
+              <p>
+                At BK Finance Global, we believe business accounting should be empowering, not confusing. After years in the corporate finance sector, our founder saw a broken system &mdash; one where business owners paid premium rates only to be left baffled by complex jargon and unclear reports.
+              </p>
+              <p>We&apos;re here to change that.</p>
+              <p>
+                We take on the heavy lifting of keeping your business fully compliant, lifting the burden off your shoulders so you can focus on what you do best: running and scaling your business. Through clear communication, dedicated partnership, and practical financial education, we help you make sense of your numbers and move forward with total confidence. Since 2020, we&apos;ve been the trusted choice for businesses seeking clarity, care, and genuine support.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
