@@ -13,7 +13,6 @@ const stagger = {
 
 const cookieTable = [
   { name: "bkfinance-cookie-consent", provider: "BK Finance Global", purpose: "Remembers your cookie preference so we don't ask on every visit.", type: "Strictly necessary", duration: "Persistent (until cleared)" },
-  { name: "Calendly session/analytics cookies", provider: "Calendly", purpose: "Powers the embedded booking calendar on our Booking page.", type: "Optional / functional", duration: "Set by Calendly" },
   { name: "Instagram embed cookies", provider: "Instagram (Meta)", purpose: "Powers the embedded video testimonial on our Testimonials page.", type: "Optional / functional", duration: "Set by Instagram" },
 ];
 
@@ -22,7 +21,7 @@ export default function Cookies() {
 
   return (
     <Layout>
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -43,7 +42,7 @@ export default function Cookies() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -116,7 +115,7 @@ export default function Cookies() {
             <div>
               <h2 className="font-display font-bold text-2xl text-navy mb-4">4. How We Ask for Consent</h2>
               <p>
-                On your first visit, we show a banner letting you accept or reject optional cookies. If you reject them, the Calendly booking widget and Instagram video embed are replaced with a placeholder until you choose to accept &mdash; they are never loaded without your consent. Strictly necessary cookies (just the one that remembers your choice) are used regardless, since the site can&apos;t function without them.
+                On your first visit, we show a banner letting you accept or reject optional cookies. If you reject them, the Instagram video embed is replaced with a placeholder until you choose to accept &mdash; it is never loaded without your consent. Strictly necessary cookies (just the one that remembers your choice) are used regardless, since the site can&apos;t function without them.
               </p>
             </div>
 

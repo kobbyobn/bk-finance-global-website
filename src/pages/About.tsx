@@ -29,7 +29,7 @@ export default function About() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -51,7 +51,7 @@ export default function About() {
       </section>
 
       {/* Story */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -85,8 +85,8 @@ export default function About() {
               className="rounded-2xl overflow-hidden shadow-xl"
             >
               <img
-                src="/founder.png"
-                alt="Founder of BK Finance Global"
+                src="/team-boardroom.jpg"
+                alt="A team of business professionals in a meeting"
                 className="w-full h-auto object-cover"
               />
             </motion.div>
@@ -95,7 +95,7 @@ export default function About() {
       </section>
 
       {/* Mission */}
-      <section className="py-20 bg-warm-white">
+      <section className="py-12 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -141,7 +141,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -172,7 +172,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-warm-white">
+      <section className="py-12 bg-warm-white">
         <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

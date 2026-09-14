@@ -17,7 +17,7 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -38,8 +38,27 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Banner Image */}
+      <section className="pb-12">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-2xl overflow-hidden shadow-lg aspect-[21/9]"
+          >
+            <img
+              src="/team-brainstorm.jpg"
+              alt="A team of business professionals collaborating around laptops"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Grid */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -76,7 +95,7 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-warm-white">
+      <section className="py-12 bg-warm-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

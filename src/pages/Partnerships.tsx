@@ -17,8 +17,8 @@ const partners = [
     name: "Tide Banking",
     desc: "We've partnered with Tide to offer our clients seamless business banking that integrates directly with their accounting. Open an account and enjoy exclusive benefits.",
     benefits: ["Free business account", "Integrated invoicing", "Automatic bookkeeping sync", "Cashback rewards"],
-    cta: "Open a Tide Account",
-    href: "https://www.tide.co",
+    cta: "Book a Call to Open a Tide Account",
+    href: "/booking",
   },
   {
     name: "BOA Academy",
@@ -40,7 +40,7 @@ export default function Partnerships() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -62,7 +62,7 @@ export default function Partnerships() {
       </section>
 
       {/* Partners */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -125,7 +125,7 @@ export default function Partnerships() {
       </section>
 
       {/* Disclosure */}
-      <section className="py-12 bg-warm-white">
+      <section className="py-8 bg-warm-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xs text-slate-text leading-relaxed">

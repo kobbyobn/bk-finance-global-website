@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, ArrowRight, MessageSquare, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, MessageSquare, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { getEmailValidationError } from "@/lib/validateEmail";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -32,6 +33,13 @@ export default function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
+
+    const emailError = getEmailValidationError(formData.get("email") as string);
+    if (emailError) {
+      toast.error(emailError);
+      return;
+    }
+
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
 
     setSubmitting(true);
@@ -57,7 +65,7 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -79,7 +87,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Grid */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Form */}
@@ -180,17 +188,6 @@ export default function Contact() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-gold" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-navy mb-1">Phone</p>
-                      <a href="tel:+447478729672" className="text-slate-text hover:text-gold transition-colors">
-                        +44 7478 729672
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
                       <MapPin className="w-5 h-5 text-gold" />
                     </div>
                     <div>
@@ -225,7 +222,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-warm-white">
+      <section className="py-12 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"

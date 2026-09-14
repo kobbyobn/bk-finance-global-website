@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Landmark, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown, Mail, MapPin, Landmark, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -23,10 +23,10 @@ const navLinks = [
     children: [
       { label: "BOA Academy", href: "/academy" },
       { label: "Masterclasses", href: "/masterclasses" },
-      { label: "Latest News", href: "/news" },
       { label: "Testimonials", href: "/testimonials" },
     ],
   },
+  { label: "Latest News", href: "/news" },
   { label: "About Us", href: "/about" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
@@ -53,10 +53,8 @@ function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-border"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy ${
+        scrolled ? "shadow-sm border-b border-white/10" : ""
       }`}
     >
       <div className="container">
@@ -65,10 +63,10 @@ function Header() {
           <Link href="/" className="flex items-center gap-3">
             <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover" />
             <div className="flex flex-col">
-              <span className="font-display font-bold text-lg leading-tight text-navy">
+              <span className="font-display font-bold text-lg leading-tight text-gold">
                 BK Finance
               </span>
-              <span className="font-display text-xs text-navy/70">
+              <span className="font-display text-xs text-gold/70">
                 Global
               </span>
             </div>
@@ -90,9 +88,7 @@ function Header() {
                   className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     location === link.href
                       ? "text-gold"
-                      : scrolled
-                      ? "text-navy hover:text-gold"
-                      : "text-navy hover:text-gold"
+                      : "text-white hover:text-gold"
                   }`}
                 >
                   {link.label}
@@ -131,13 +127,13 @@ function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/booking"
-              className="hidden sm:inline-flex items-center px-6 py-2.5 bg-navy text-white text-sm font-semibold rounded-lg hover:bg-navy-mid transition-all duration-200 active:scale-[0.97]"
+              className="hidden sm:inline-flex items-center px-6 py-2.5 bg-gold text-navy text-sm font-semibold rounded-lg hover:bg-gold-light transition-all duration-200 active:scale-[0.97]"
             >
               Book a Consultation
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-navy"
+              className="lg:hidden p-2 text-white"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -153,7 +149,7 @@ function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-border overflow-hidden"
+            className="lg:hidden bg-navy border-t border-white/10 overflow-hidden"
           >
             <nav className="container py-6 space-y-1">
               {navLinks.map((link) => (
@@ -161,7 +157,7 @@ function Header() {
                   <div className="flex items-center">
                     <Link
                       href={link.href}
-                      className="flex-1 block px-4 py-3 text-navy font-medium rounded-lg hover:bg-warm-white transition-colors"
+                      className="flex-1 block px-4 py-3 text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -170,7 +166,7 @@ function Header() {
                         onClick={() =>
                           setMobileSubOpen(mobileSubOpen === link.label ? null : link.label)
                         }
-                        className="p-3 text-navy"
+                        className="p-3 text-white"
                         aria-label={`Toggle ${link.label} submenu`}
                       >
                         <ChevronDown
@@ -193,7 +189,7 @@ function Header() {
                           <Link
                             key={child.label}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-navy/70 hover:text-gold transition-colors"
+                            className="block px-4 py-2 text-sm text-white/70 hover:text-gold transition-colors"
                           >
                             {child.label}
                           </Link>
@@ -206,7 +202,7 @@ function Header() {
               <div className="pt-4">
                 <Link
                   href="/booking"
-                  className="block w-full text-center px-6 py-3 bg-navy text-white font-semibold rounded-lg"
+                  className="block w-full text-center px-6 py-3 bg-gold text-navy font-semibold rounded-lg"
                 >
                   Book a Consultation
                 </Link>
@@ -229,8 +225,8 @@ function Footer() {
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 rounded-full shrink-0 object-cover border border-white/20" />
               <div>
-                <span className="font-display font-bold text-lg">BK Finance</span>
-                <span className="block text-xs text-white/60">
+                <span className="font-display font-bold text-lg text-gold">BK Finance</span>
+                <span className="block text-xs text-gold/60">
                   Global
                 </span>
               </div>
@@ -303,12 +299,6 @@ function Footer() {
                 <Mail className="w-4 h-4 mt-0.5 text-gold" />
                 <a href="mailto:bkfinanceltd@gmail.com" className="text-sm text-white/60 hover:text-white transition-colors">
                   bkfinanceltd@gmail.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 text-gold" />
-                <a href="tel:+447478729672" className="text-sm text-white/60 hover:text-white transition-colors">
-                  +44 7478 729672
                 </a>
               </li>
               <li className="flex items-start gap-3">

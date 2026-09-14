@@ -16,7 +16,7 @@ export default function News() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -38,7 +38,7 @@ export default function News() {
       </section>
 
       {/* News List */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           {news.length === 0 ? (
             <motion.div

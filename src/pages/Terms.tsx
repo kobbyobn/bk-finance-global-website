@@ -13,7 +13,7 @@ const stagger = {
 export default function Terms() {
   return (
     <Layout>
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -34,7 +34,7 @@ export default function Terms() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -123,7 +123,7 @@ export default function Terms() {
             <div>
               <h2 className="font-display font-bold text-2xl text-navy mb-4">12. Contact</h2>
               <p>
-                Questions about these terms? Reach us at <a href="mailto:bkfinanceltd@gmail.com" className="text-navy underline hover:text-gold transition-colors">bkfinanceltd@gmail.com</a> or <a href="tel:+447478729672" className="text-navy underline hover:text-gold transition-colors">+44 7478 729672</a>.
+                Questions about these terms? Reach us at <a href="mailto:bkfinanceltd@gmail.com" className="text-navy underline hover:text-gold transition-colors">bkfinanceltd@gmail.com</a>.
               </p>
             </div>
           </motion.div>

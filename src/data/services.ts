@@ -16,8 +16,8 @@ export const services: ServiceInfo[] = [
     icon: BookOpen,
     title: "Accounts Preparation Management",
     desc: "Hands-on bookkeeping, budgeting, and account management on a 6 or 12-month term.",
-    longDesc: "Dedicated support with your books, budgets, and goals over a 6 or 12-month term. You get regular 1-1 consultations, a budget planner reviewed monthly by your accountant, and full management of your accounts, backed by weekly check-ins so nothing falls through the cracks. Opt for the 12-month term and payroll and VAT registration are handled for you too.",
-    benefits: ["1-1 consultations", "Budget planner, reviewed monthly", "Weekly check-ins", "Full accounts & bookkeeping management", "Monthly performance review", "Business goals & targets", "Meeting debrief notes after every session", "12-month term adds payroll (payslips & PAYE) and VAT registration"],
+    longDesc: "Dedicated support with your books, budgets, and goals over a 6 or 12-month term. You get regular 1-1 consultations, a budget planner reviewed monthly by your accountant, and full management of your accounts, backed by monthly check-ins so nothing falls through the cracks. Opt for the 12-month term and payroll and VAT registration are handled for you too.",
+    benefits: ["1-1 consultations", "Budget planner, reviewed monthly", "Monthly check-ins", "Full accounts & bookkeeping management", "Monthly performance review", "Business goals & targets", "Meeting debrief notes after every session", "12-month term adds payroll (payslips & PAYE) and VAT registration"],
     whoHelps: "Business owners who want a dedicated accountant managing their accounts and finances, on a 6 or 12-month term.",
   },
   {

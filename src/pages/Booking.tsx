@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
-import CookieGate from "@/components/CookieGate";
 import { motion } from "framer-motion";
 import { BookOpen, FileText, Calculator, Phone, Landmark, Receipt, FileSpreadsheet, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { getEmailValidationError } from "@/lib/validateEmail";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,7 +19,7 @@ const consultationTypes = [
     id: "accounts-preparation-management",
     title: "Accounts Preparation Management",
     duration: "6 or 12 months",
-    desc: "Dedicated bookkeeping, monthly budget reviews, and weekly check-ins on a 6 or 12-month term. The 12-month term also includes payroll and VAT registration.",
+    desc: "Dedicated bookkeeping, monthly budget reviews, and monthly check-ins on a 6 or 12-month term. The 12-month term also includes payroll and VAT registration.",
     icon: BookOpen,
   },
   {
@@ -76,8 +76,17 @@ export default function Booking() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
+
+    const emailError = getEmailValidationError(formData.get("email") as string);
+    if (emailError) {
+      toast.error(emailError);
+      return;
+    }
+
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", "New booking enquiry from BK Finance website");
+    const selectedType = consultationTypes.find(t => t.id === selected)?.title;
+    formData.append("subject", selectedType ? `New booking enquiry: ${selectedType}` : "New booking enquiry from BK Finance website");
+    if (selectedType) formData.append("consultation_type", selectedType);
 
     setSubmitting(true);
     try {
@@ -102,7 +111,7 @@ export default function Booking() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -124,7 +133,7 @@ export default function Booking() {
       </section>
 
       {/* Consultation Types */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -161,34 +170,7 @@ export default function Booking() {
             ))}
           </motion.div>
 
-          {/* Calendly Scheduling */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto mb-16"
-          >
-            <h3 className="font-display font-bold text-2xl text-navy mb-2 text-center">
-              Pick a Time That Works for You
-            </h3>
-            <p className="text-slate-text text-center mb-6">
-              {selected ? `Booking: ${consultationTypes.find(t => t.id === selected)?.title}` : "Choose a slot below and we'll take it from there."}
-            </p>
-            <CookieGate label="Booking calendar">
-              <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm">
-                <iframe
-                  src="https://calendly.com/kobby678/30min?hide_gdpr_banner=1"
-                  width="100%"
-                  height="700"
-                  style={{ border: 0 }}
-                  title="Schedule a call with BK Finance"
-                />
-              </div>
-            </CookieGate>
-          </motion.div>
-
-          {/* Fallback Message Form */}
+          {/* Booking Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -198,10 +180,12 @@ export default function Booking() {
           >
             <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-border/50">
               <h3 className="font-display font-bold text-2xl text-navy mb-2">
-                Can&apos;t Find a Time?
+                Request Your Consultation
               </h3>
               <p className="text-slate-text text-sm mb-6">
-                Send us a message instead and we&apos;ll get back to you to arrange something that works.
+                {selected
+                  ? `You're enquiring about: ${consultationTypes.find(t => t.id === selected)?.title}. Send your details and we'll get back to you to arrange a time.`
+                  : "Send us your details and we'll get back to you to arrange a time that works."}
               </p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />

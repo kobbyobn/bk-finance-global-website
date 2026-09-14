@@ -10,7 +10,7 @@ export default function CookieConsentBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-[60] bg-navy border-t border-white/10 shadow-2xl">
       <div className="container py-5 flex flex-col sm:flex-row items-center gap-4">
         <p className="text-white/80 text-sm leading-relaxed flex-1">
-          We use essential cookies to run this site, plus optional cookies from Calendly and Instagram to power booking and testimonial content. We only load those after you say it&apos;s okay.{" "}
+          We use essential cookies to run this site, plus an optional cookie from Instagram to power testimonial content. We only load it after you say it&apos;s okay.{" "}
           <Link href="/cookie-policy" className="text-gold underline hover:text-gold-light transition-colors">
             Read our Cookie Policy
           </Link>

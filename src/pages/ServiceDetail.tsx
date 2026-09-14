@@ -24,7 +24,7 @@ export default function ServiceDetail() {
 
   return (
     <Layout>
-      <section className="pt-32 pb-20 bg-warm-white">
+      <section className="pt-28 pb-12 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -69,7 +69,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -91,7 +91,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="py-20 bg-warm-white">
+      <section className="py-12 bg-warm-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

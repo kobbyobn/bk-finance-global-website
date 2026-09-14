@@ -180,6 +180,10 @@
 .shadow-navy\/20 { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); }
 .font-display { font-family: 'Inter', system-ui, sans-serif; }
 
+/* Aesthetic polish: soft glow accents on hover */
+.hover\:shadow-gold-glow:hover { box-shadow: 0 12px 32px -8px rgba(47, 178, 175, 0.45); }
+.shadow-gold-glow-sm { box-shadow: 0 8px 24px -6px rgba(47, 178, 175, 0.3); }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

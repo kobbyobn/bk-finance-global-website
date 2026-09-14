@@ -47,7 +47,7 @@ export default function Testimonials() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -69,7 +69,7 @@ export default function Testimonials() {
       </section>
 
       {/* Video Testimonial */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -100,7 +100,7 @@ export default function Testimonials() {
       </section>
 
       {/* Written Testimonials */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial="hidden"

@@ -14,7 +14,7 @@ const stagger = {
 export default function Privacy() {
   return (
     <Layout>
-      <section className="pt-32 pb-16 bg-warm-white">
+      <section className="pt-28 pb-10 bg-warm-white">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -35,7 +35,7 @@ export default function Privacy() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -50,7 +50,7 @@ export default function Privacy() {
                 BK Finance Global (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) provides bookkeeping, business registration, and financial advisory services. This policy explains how we collect, use, and protect your personal data when you visit our website, get in touch, or become a client, in line with UK GDPR and the Data Protection Act 2018.
               </p>
               <p className="mt-3">
-                Contact: <a href="mailto:bkfinanceltd@gmail.com" className="text-navy underline hover:text-gold transition-colors">bkfinanceltd@gmail.com</a> &middot; <a href="tel:+447478729672" className="text-navy underline hover:text-gold transition-colors">+44 7478 729672</a>
+                Contact: <a href="mailto:bkfinanceltd@gmail.com" className="text-navy underline hover:text-gold transition-colors">bkfinanceltd@gmail.com</a>
               </p>
             </div>
 
@@ -59,7 +59,6 @@ export default function Privacy() {
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong className="text-navy">Contact details</strong> you give us via our booking or contact forms — name, email, phone number, and business name.</li>
                 <li><strong className="text-navy">Message content</strong> you submit through our forms, including any details about your business or enquiry.</li>
-                <li><strong className="text-navy">Booking information</strong> when you schedule a call through Calendly, including your chosen time slot and any details you provide.</li>
                 <li><strong className="text-navy">Financial and business information</strong> you share with us if you become a client, as needed to provide bookkeeping, registration, or advisory services.</li>
                 <li><strong className="text-navy">Basic technical data</strong> such as browser type and general usage, to keep the website working properly.</li>
               </ul>
@@ -84,7 +83,6 @@ export default function Privacy() {
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li><strong className="text-navy">Web3Forms</strong> — to process and deliver contact and booking form submissions to us by email</li>
-                <li><strong className="text-navy">Calendly</strong> — to manage consultation bookings</li>
                 <li><strong className="text-navy">HMRC and relevant authorities</strong> — where required to deliver compliance-related services or as legally obligated</li>
               </ul>
               <p className="mt-3">We do not share your data with third parties for their own marketing purposes.</p>
@@ -115,7 +113,7 @@ export default function Privacy() {
             <div>
               <h2 className="font-display font-bold text-2xl text-navy mb-4">7. Cookies</h2>
               <p>
-                We use one essential cookie to remember your cookie preference, and optional cookies from Calendly and Instagram to power embedded booking and testimonial content &mdash; only loaded once you accept them. See our{" "}
+                We use one essential cookie to remember your cookie preference, and an optional cookie from Instagram to power embedded testimonial content &mdash; only loaded once you accept it. See our{" "}
                 <Link href="/cookie-policy" className="text-navy underline hover:text-gold transition-colors">Cookie Policy</Link> for full details and to manage your preference.
               </p>
             </div>
