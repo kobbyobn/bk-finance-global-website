@@ -69,8 +69,14 @@ const consultationTypes = [
 const WEB3FORMS_ACCESS_KEY = "a51660b9-9bdb-445b-8daa-e9bd95d5aecb";
 
 export default function Booking() {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
+
+  const toggleSelected = (id: string) => {
+    setSelected((prev) =>
+      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+    );
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,9 +90,12 @@ export default function Booking() {
     }
 
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    const selectedType = consultationTypes.find(t => t.id === selected)?.title;
-    formData.append("subject", selectedType ? `New booking enquiry: ${selectedType}` : "New booking enquiry from BK Finance website");
-    if (selectedType) formData.append("consultation_type", selectedType);
+    const selectedTitles = consultationTypes
+      .filter((t) => selected.includes(t.id))
+      .map((t) => t.title)
+      .join(", ");
+    formData.append("subject", selectedTitles ? `New booking enquiry: ${selectedTitles}` : "New booking enquiry from BK Finance website");
+    if (selectedTitles) formData.append("consultation_type", selectedTitles);
 
     setSubmitting(true);
     try {
@@ -98,6 +107,7 @@ export default function Booking() {
       if (result.success) {
         toast.success("Message sent! We'll get back to you shortly.");
         form.reset();
+        setSelected([]);
       } else {
         toast.error("Something went wrong. Please email us directly at bkfinanceltd@gmail.com.");
       }
@@ -126,7 +136,7 @@ export default function Booking() {
               Let&apos;s Talk About Your Business
             </motion.h1>
             <motion.p variants={fadeUp} className="text-slate-text text-lg leading-relaxed">
-              Choose the consultation type that best fits your needs. Every conversation starts with understanding your goals.
+              Choose one or more consultation types that fit your needs. Every conversation starts with understanding your goals.
             </motion.p>
           </motion.div>
         </div>
@@ -146,14 +156,14 @@ export default function Booking() {
               <motion.div
                 key={type.id}
                 variants={fadeUp}
-                onClick={() => setSelected(type.id)}
+                onClick={() => toggleSelected(type.id)}
                 className={`relative bg-white rounded-xl p-8 border-2 transition-all duration-300 cursor-pointer hover:shadow-lg ${
-                  selected === type.id
+                  selected.includes(type.id)
                     ? "border-gold shadow-lg scale-[1.02]"
                     : "border-border/50 hover:-translate-y-1"
                 }`}
               >
-                {selected === type.id && (
+                {selected.includes(type.id) && (
                   <div className="absolute top-4 right-4">
                     <CheckCircle2 className="w-6 h-6 text-gold" />
                   </div>
@@ -183,8 +193,8 @@ export default function Booking() {
                 Request Your Consultation
               </h3>
               <p className="text-slate-text text-sm mb-6">
-                {selected
-                  ? `You're enquiring about: ${consultationTypes.find(t => t.id === selected)?.title}. Send your details and we'll get back to you to arrange a time.`
+                {selected.length > 0
+                  ? `You're enquiring about: ${consultationTypes.filter(t => selected.includes(t.id)).map(t => t.title).join(", ")}. Send your details and we'll get back to you to arrange a time.`
                   : "Send us your details and we'll get back to you to arrange a time that works."}
               </p>
               <form onSubmit={handleSubmit} className="space-y-5">
