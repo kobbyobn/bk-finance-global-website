@@ -314,8 +314,10 @@ function Footer() {
         {/* Affiliations & Partnerships */}
         <div className="mt-16 pt-10 border-t border-white/10">
           <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center bg-white rounded-lg px-4 py-3 border border-white/10">
-              <img src="/partners/freeagent-badge.png" alt="FreeAgent Accredited Practitioner 2026" className="h-8 w-auto" />
+            <div className="flex items-center gap-3 bg-white/5 rounded-lg px-4 py-3 border border-white/10">
+              <span className="font-display font-bold text-base text-[#1E6FFF]">FreeAgent</span>
+              <span className="w-px h-4 bg-white/20" />
+              <span className="text-sm text-white/70">Accredited Practitioner 2026</span>
             </div>
             <Link
               href="/booking"
