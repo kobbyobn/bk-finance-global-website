@@ -62,7 +62,7 @@ function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-0">
             <img src="/logo.png" alt="BK Finance Global" className="w-14 h-14 shrink-0 object-contain" />
-            <div className="flex flex-col -space-y-0.5 -ml-2">
+            <div className="flex flex-col -space-y-0.5 -ml-1">
               <span className="font-display font-bold text-base leading-tight text-gold">
                 BK Finance
               </span>
