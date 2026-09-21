@@ -60,13 +60,13 @@ function Header() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="BK Finance Global" className="w-10 h-10 shrink-0 object-contain" />
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-lg leading-tight text-gold">
+          <Link href="/" className="flex items-center gap-1">
+            <img src="/logo.png" alt="BK Finance Global" className="w-14 h-14 shrink-0 object-contain" />
+            <div className="flex flex-col -space-y-0.5">
+              <span className="font-display font-bold text-base leading-tight text-gold">
                 BK Finance
               </span>
-              <span className="font-display text-xs text-gold/70">
+              <span className="font-display text-xs leading-tight text-gold/70">
                 Global
               </span>
             </div>
