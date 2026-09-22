@@ -17,7 +17,7 @@ const stagger = {
 // Client-side access gate only — this code lives in the shipped JS bundle
 // and is not a real security boundary. It just keeps casual visitors out
 // of the sign-up form until they've been given the code directly.
-const ACCESS_CODE = "30087377";
+const ACCESS_CODE = "BOA@BKFG26";
 const UNLOCK_STORAGE_KEY = "boa_academy_unlocked";
 const WEB3FORMS_ACCESS_KEY = "a51660b9-9bdb-445b-8daa-e9bd95d5aecb";
 
