@@ -49,6 +49,7 @@ function Header() {
     setMobileOpen(false);
     setOpenDropdown(null);
     setMobileSubOpen(null);
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
